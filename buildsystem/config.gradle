@@ -1,0 +1,31 @@
+ext {
+    // manifest 配置
+//    globalManifestPlaceholders = [
+//            "UMENT_APP_KEY"    : "5a3db72d8f4a9d59ab0008ac",
+//            "BAIDU_MAP_APP_KEY": "d6V8ApGKULwcobSLslGhDMG2BTYcnSMR",
+//    ]
+//
+//    debugManifestPlaceholders = [
+//            "NIM_APP_KEY": "e72da5fe16c17a0d75c593e192ff51ed"
+//    ]
+//
+//    releaseManifestPlaceholders = [
+//            "NIM_APP_KEY": "e72da5fe16c17a0d75c593e192ff51ed"
+//    ]
+
+    // buildConfig 配置
+    globalBuildConfig = [
+            ['int', "APP_SOURCE", '3'],
+            ['String', 'BASE_URL', '"http://test2.haofang.net:11013/"'],
+            ['String', 'DATABASE_NAME', '"android_arch.db"'],
+            ['int', 'DATABASE_VERSION', '1'],
+            ['String', 'WX_APP_ID', '"wx036098a3f4376fed"']
+    ]
+    debugBuildCongig = [
+//            ['String', 'TINGYUN_TOKEN', '"30b8d3833c8d419fa9fba960c8c3deda"']
+    ]
+
+    releaseBuildConfig = [
+//            ['String', 'TINGYUN_TOKEN', '"a0a2121bf0ad4607a775263e9b832cac"']
+    ]
+}

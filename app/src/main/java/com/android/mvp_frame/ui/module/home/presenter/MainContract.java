@@ -7,10 +7,8 @@ import com.android.mvp_frame.frame.IPresenter;
 public interface MainContract {
 
     interface View extends BaseView{
-        void sayHello(String text);
     }
 
     interface Presenter extends IPresenter<View>{
-        void sayHello();
     }
 }

@@ -6,12 +6,6 @@
     android:orientation="vertical"
     tools:context="com.android.mvp_frame.ui.module.home.activity.MainActivity">
 
-    <Button
-        android:id="@+id/btn_say_hello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:layout_gravity="center"
-        android:text="Hello World!" />
+    <include layout="@layout/toolbar_no_navigation_text" />
 
 </LinearLayout>

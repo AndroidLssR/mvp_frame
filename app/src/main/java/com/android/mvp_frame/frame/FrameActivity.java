@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.mvp_frame.R;
 import com.android.mvp_frame.data.exception.AccessTokenException;
 import com.android.mvp_frame.data.exception.BadRequestException;
 import com.android.mvp_frame.data.exception.BusinessException;
@@ -43,6 +44,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
@@ -79,6 +81,7 @@ public abstract class FrameActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         try {
             AndroidInjection.inject(this);
         } catch (Exception e) {
@@ -93,7 +96,6 @@ public abstract class FrameActivity extends AppCompatActivity
 
         PresenterCompat.inject(this);
         getLifecycle().addObserver(new EventBusLifecycle(this));
-
     }
 
     @Override
@@ -106,10 +108,20 @@ public abstract class FrameActivity extends AppCompatActivity
         for (BasePresenter presenter : presenters) {
             getLifecycle().addObserver(presenter);
         }
-
+        getActionBarToolbar();
     }
 
+    protected void setActionBarToolbarIcon(int i) {
+        if (this.mActionBarToolbar != null) {
+            this.mActionBarToolbar.setNavigationIcon(i);
+        }
+    }
 
+    protected void setTitle(String title) {
+        if (mActionBarToolbar != null && mToolbarTitle != null) {
+            mToolbarTitle.setText(title);
+        }
+    }
 
     @Override
     protected void onTitleChanged(CharSequence title, int color) {
@@ -117,6 +129,11 @@ public abstract class FrameActivity extends AppCompatActivity
         if (mActionBarToolbar != null && mToolbarTitle != null) {
             mToolbarTitle.setText(title);
         }
+    }
+
+    @OnClick(R.id.toolbar_navigation_text)
+    void backPressed(){
+        onBackPressed();
     }
 
     @Override
@@ -166,6 +183,20 @@ public abstract class FrameActivity extends AppCompatActivity
         if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(showHomeAsUp);
         }
+    }
+
+    protected Toolbar getActionBarToolbar() {
+        if (mActionBarToolbar == null) {
+            mActionBarToolbar = findViewById(R.id.toolbar_actionbar);
+            if (mActionBarToolbar != null) {
+                mActionBarToolbar.setNavigationIcon(R.drawable.icon_up);
+                setSupportActionBar(mActionBarToolbar);
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+                mToolbarTitle = mActionBarToolbar.findViewById(R.id.toolbar_title);
+            }
+        }
+        return mActionBarToolbar;
     }
 
     protected SafetyHandler getSafetyHandler() {

@@ -27,6 +27,8 @@ android {
         globalConfig['globalBuildConfig'].each { config ->
             buildConfigField(config[0], config[1], config[2])
         }
+
+        manifestPlaceholders = globalConfig['globalManifestPlaceholders']
     }
 
     dexOptions {
@@ -53,11 +55,19 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            globalConfig['releaseBuildConfig'].each { config ->
+                buildConfigField(config[0], config[1], config[2])
+            }
+            manifestPlaceholders = globalConfig['releaseManifestPlaceholders']
         }
 
-        debug{
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            globalConfig['debugBuildConfig'].each { config ->
+                buildConfigField(config[0], config[1], config[2])
+            }
+            manifestPlaceholders = globalConfig['debugManifestPlaceholders']
         }
     }
 

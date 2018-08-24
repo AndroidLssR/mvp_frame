@@ -14,8 +14,4 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
     public MainPresenter() {
     }
 
-    @Override
-    public void sayHello() {
-        getView().sayHello("hello world");
-    }
 }

@@ -45,6 +45,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Optional;
 import butterknife.Unbinder;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
@@ -131,6 +132,7 @@ public abstract class FrameActivity extends AppCompatActivity
         }
     }
 
+    @Optional
     @OnClick(R.id.toolbar_navigation_text)
     void backPressed(){
         onBackPressed();

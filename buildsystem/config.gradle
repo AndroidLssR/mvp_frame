@@ -14,7 +14,7 @@ ext {
 
     // buildConfig 配置
     globalBuildConfig = [
-            ["String", "DEVELOPER", "lssRan"],
+            ['String', "DEVELOPER", '"lssRan"'],
             ['int', "APP_SOURCE", '1'],
             ['String', 'DATABASE_NAME', '"android_arch.db"'],
             ['int', 'DATABASE_VERSION', '1'],
